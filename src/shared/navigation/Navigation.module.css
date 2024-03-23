@@ -1,0 +1,15 @@
+.Menu {
+  display: inline-flex;
+  list-style: none;
+  gap: 10px;
+}
+
+.MenuItem {
+  padding: 5px;
+  box-shadow: inset 0px 0px 10px hsl(0deg 0% 100% / 15%);
+  border-radius: 5px;
+}
+
+.MenuAnchor {
+  color: white;
+}

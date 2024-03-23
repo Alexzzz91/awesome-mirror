@@ -1,0 +1,11 @@
+html {
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    font-family: system-ui;
+    /* font-family: Consolas, Courier New, monospace; */
+}
+
+body {
+    margin: 0px;
+}

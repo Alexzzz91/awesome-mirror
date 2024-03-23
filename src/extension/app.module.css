@@ -1,0 +1,34 @@
+:global {
+    .bg-wrapper {
+        background-image:url('https://source.unsplash.com/category/nature/1920x1080');
+        background-size:cover;
+        height:100vh;
+        width: 100vw;
+    }
+    
+    .bg-wrapper::before{
+        content: "";
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,.35);
+    }
+    
+    main {
+      z-index: 9999;
+      position: relative;
+      font-family: "Helvetica Neue";
+      color: white;
+      font-size: 15vw;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin:0;
+    }
+
+    body {
+        display: block;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+}

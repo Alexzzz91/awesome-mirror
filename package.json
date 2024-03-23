@@ -1,0 +1,82 @@
+{
+  "name": "my-awesome-mirror",
+  "private": true,
+  "scripts": {
+    "start": "tramvai start awesome-mirror-pwa",
+    "build": "tramvai build awesome-mirror-pwa",
+    "preview": "tramvai start-prod awesome-mirror-pwa",
+    "analyze": "tramvai analyze awesome-mirror-pwa",
+    "static": "tramvai static awesome-mirror-pwa",
+    "start:ext": "tramvai start awesome-mirror-extension",
+    "build:ext": "tramvai build awesome-mirror-extension",
+    "preview:ext": "tramvai start-prod awesome-mirror-extension",
+    "analyze:ext": "tramvai analyze awesome-mirror-extension",
+    "static:ext": "ASSETS_PREFIX=http://0.0.0.0:4000/dist/client/ tramvai static awesome-mirror-extension --serve",
+    "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore --ignore-path ./src/extension/js/* .",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:integration": "jest -w=3 --config ./jest.integration.config.ts",
+    "test:integration:watch": "jest --runInBand --watch --config ./jest.integration.config.ts"
+  },
+  "browser": "./src/extension/index.js",
+  "dependencies": {
+    "@tramvai/core": "2.160.1",
+    "@tramvai/module-common": "2.160.1",
+    "@tramvai/module-error-interceptor": "2.160.1",
+    "@tramvai/module-http-client": "2.160.1",
+    "@tramvai/module-page-render-mode": "2.160.1",
+    "@tramvai/module-progressive-web-app": "2.160.1",
+    "@tramvai/module-render": "2.160.1",
+    "@tramvai/module-router": "2.160.1",
+    "@tramvai/module-seo": "2.160.1",
+    "@tramvai/module-server": "2.160.1",
+    "@tramvai/react": "2.160.1",
+    "@tramvai/state": "2.160.1",
+    "@tramvai/tokens-render": "2.160.1",
+    "@tramvai/tokens-router": "2.160.1",
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tslib": "^2.6.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@tinkoff/eslint-config": "^1.52.1",
+    "@tinkoff/eslint-config-react": "^1.52.1",
+    "@tinkoff/eslint-plugin-tramvai": "^0.6.6",
+    "@tramvai/cli": "2.160.1",
+    "@tramvai/module-request-limiter": "2.160.1",
+    "@tramvai/pwa-recipes": "2.160.1",
+    "@tramvai/swc-integration": "2.160.1",
+    "@tramvai/test-integration": "2.160.1",
+    "@tramvai/test-integration-jest": "2.160.1",
+    "@tramvai/test-react": "2.160.1",
+    "@tramvai/test-unit": "2.160.1",
+    "@tramvai/test-unit-jest": "2.160.1",
+    "@types/jest": "^29.5.4",
+    "@types/react": "^18.2.21",
+    "husky": "^4.3.8",
+    "jest": "^29.7.0",
+    "jest-circus": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^14.0.1",
+    "postcss-custom-media": "^10.0.0",
+    "postcss-custom-properties": "^13.3.0",
+    "postcss-modules-values-replace": "^4.1.0",
+    "postcss-nested": "^6.0.1",
+    "prettier-config-tinkoff": "^0.2.4",
+    "sharp": "^0.32.6",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
