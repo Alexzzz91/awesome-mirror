@@ -98,13 +98,14 @@ momentum.Core.prototype = {
   //
   // hint. figure out what kind of response the weatherData is going to be, and see how you might be able to access the quote of the day from that.
   setWeather(weatherData) {
-    if (this.cache) {
-      this.cache.put('weatherData', weatherData);
-    }
+    const dataJSON = JSON.stringify({
+      weatherData,
+      time: new Date(),
+    })
 
-    console.log('this', this);
+    localStorage.setItem('weatherData', dataJSON)
+
     // YOUR CODE HERE
-    console.log('weatherData', weatherData);
     this.weather =
       weatherData.weather &&
       weatherData.weather[0] &&
@@ -135,18 +136,6 @@ momentum.Core.prototype = {
   //
   // note. you might run into scoping issues again. You should know how to solve them by now, using .call, .apply, or .bind.
   updateWeather() {
-    this.cache = null;
-
-    async function createCache() {
-      try {
-        return await caches.open('openweathermap');
-      } catch (e) {
-        console.error('CacheStorage is not defined');
-
-        return null;
-      }
-    }
-
     const getWeather = () => {
       this.weatherCtrl.fetchWeather(
         this.lat,
@@ -155,15 +144,24 @@ momentum.Core.prototype = {
       );
     };
 
-    createCache()
-      .then((e) => {
-        console.log(e);
-        this.cache = e;
+    try {
+      const cachedWeatherData = JSON.parse(localStorage.getItem('weatherData'))
+
+      if (!cachedWeatherData) {
         getWeather();
-      })
-      .catch(() => {
-        getWeather();
-      });
+      } else {
+        const cachedWeatherTime = new Date(cachedWeatherData.time)
+
+        if ((new Date().getTime() - cachedWeatherTime.getTime()) > 1200000) {
+          localStorage.removeItem('weatherData')
+          getWeather();
+        }
+
+        this.setWeather(cachedWeatherData.weatherData)
+      }
+    } catch (error) {
+      getWeather();
+    }
   },
   // `updateQuote` method
   // This function should call quoteCtrl.fetchQuote and pass in this.setQuote as the callback.
@@ -228,11 +226,9 @@ momentum.Core.prototype = {
         Fog: ['Туман, вау'],
       },
     };
-    // console.log('this.salutation', this.salutation);
 
     // this.quoteCtrl.fetchQuote(this.setQuote.bind(this));
     const complimentsObj = allCompliments[this.salutation];
-    console.log('complimentsObj', complimentsObj);
     let complimentVariants = [...complimentsObj.generic];
 
     if (this.weather && complimentsObj[this.weather]) {
@@ -258,10 +254,8 @@ momentum.Core.prototype = {
 
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        console.log('EXECUTING');
         this.lat = position.coords.latitude;
         this.lon = position.coords.longitude;
-        console.log(this.lat, this.lon);
         this.updateWeather();
       }.bind(this),
       error

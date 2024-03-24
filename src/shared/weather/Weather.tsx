@@ -1,9 +1,12 @@
-// import styles from './Weather.module.css';
-
 import { useActions, useStore, useStoreSelector } from '@tramvai/state';
 import { useEffect } from 'react';
 import { ConfigStore } from '~entities/config';
 import { WeatherStore, fetchWeatherAction } from '~entities/weather';
+import styles from './Weather.module.css';
+
+const TEMP_CONSTANT = 273.15;
+// const ICON_SIZE = '@2x';
+const ICON_SIZE = '';
 
 export const Weather = () => {
   const weatherStore = useStore(WeatherStore);
@@ -14,6 +17,10 @@ export const Weather = () => {
     ConfigStore,
     (state) => state.weatheApiKey
   );
+  const weather = useStoreSelector(
+    WeatherStore,
+    (state) => state.weather && state.weather[0] && state.weather[0]
+  );
 
   const loadWeather = useActions(fetchWeatherAction);
 
@@ -23,9 +30,7 @@ export const Weather = () => {
         apiKey: weatheApiKey,
         lat,
         lon,
-      })
-        .then((e) => console.log('e', e))
-        .catch(error);
+      }).catch(error);
     const savedData = localStorage.getItem('position.coords');
     if (savedData) {
       const lat = savedData.split('+')[0];
@@ -51,19 +56,31 @@ export const Weather = () => {
   }, [loadWeather, weatheApiKey]);
 
   return (
-    <div className="text-right top-right weather">
-      <div>
-        <i className="wi wi-day-sunny" />
-        &nbsp;
-        <span />
-        &#8451;
+    <div className={styles.container}>
+      <div className={styles.row}>
+        {weather?.icon && (
+          <img
+            alt={weather.description}
+            src={`https://openweathermap.org/img/wn/${weather?.icon}${ICON_SIZE}.png`}
+          />
+        )}
+
+        <span>
+          {Math.floor(
+            (weatherStore?.main?.temp ?? TEMP_CONSTANT) - TEMP_CONSTANT
+          )}
+          ℃
+        </span>
       </div>
-      <div>
-        Ощущается как:
+      <div className={styles.row}>
+        Ощущается как:{' '}
+        {Math.floor(
+          (weatherStore?.main?.feels_like ?? TEMP_CONSTANT) - TEMP_CONSTANT
+        )}
+        ℃
         <span />
-        &#8451
       </div>
-      <h5>Moscow</h5>
+      <span>{weatherStore?.name}</span>
     </div>
   );
 };

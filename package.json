@@ -11,7 +11,7 @@
     "build:ext": "tramvai build awesome-mirror-extension",
     "preview:ext": "tramvai start-prod awesome-mirror-extension",
     "analyze:ext": "tramvai analyze awesome-mirror-extension",
-    "static:ext": "ASSETS_PREFIX=http://0.0.0.0:4000/dist/client/ tramvai static awesome-mirror-extension --serve",
+    "static:ext": "tramvai static awesome-mirror-extension --serve",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore --ignore-path ./src/extension/js/* .",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",

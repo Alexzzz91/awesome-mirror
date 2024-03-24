@@ -51,7 +51,7 @@ createApp({
       useValue: {
         type: ResourceType.asIs,
         slot: ResourceSlot.BODY_START,
-        payload: '<div class="application bg-wrapper">',
+        payload: '<div class="bg-wrapper">',
       },
     },
     {

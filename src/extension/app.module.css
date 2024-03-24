@@ -12,6 +12,7 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba(0,0,0,.35);
+        z-index: 1;
     }
     
     main {
@@ -19,10 +20,17 @@
       position: relative;
       font-family: "Helvetica Neue";
       color: white;
-      font-size: 15vw;
+      font-size: 5vw;
       letter-spacing: -1px;
       line-height: 1;
       margin:0;
+    }
+
+    header,
+    main,
+    .application {
+        z-index: 2;
+        position: relative;
     }
 
     body {

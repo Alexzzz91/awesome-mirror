@@ -1,6 +1,7 @@
 .Container {
   color: white;
   font-size: 65px;
+  width: 50vw;
 }
 
 .Clock {
@@ -25,5 +26,21 @@
   align-content: space-around;
   justify-content: flex-start;
   align-items: center;
+  gap: 15px;
+}
+
+.TimeRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Helvetica Neue";
+  color: white;
+  font-size: 15vw;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0;
   gap: 15px;
 }

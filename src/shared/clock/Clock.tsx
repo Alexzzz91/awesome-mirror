@@ -144,7 +144,7 @@ export const Clock = () => {
         <div className={styles.Row}>
           <div ref={dayNameRef}> </div>
         </div>
-        <div className={styles.Row}>
+        <div className={styles.TimeRow}>
           <div ref={hourRef}>12</div> :<div ref={minutesRef}>00</div>
           {/* {everySecondsUpdate && (
             <>

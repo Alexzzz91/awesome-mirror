@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useStoreSelector } from '@tramvai/state';
+import { useStore, useStoreSelector } from '@tramvai/state';
 import { WeatherStore } from '~entities/weather';
+import { ConfigStore } from '~entities/config';
 import styles from './Focus.module.css';
 
 const allCompliments = {
@@ -71,6 +72,7 @@ enum SALUTATION {
 export const Focus = () => {
   const [focus, setFocus] = useState<string>('Соберись!');
   const [salutation, setSalutation] = useState<SALUTATION>();
+  const { userName } = useStore(ConfigStore);
   const weather = useStoreSelector(WeatherStore, (store) => {
     return store?.weather && store?.weather[0] && store?.weather[0]?.main;
   });
@@ -79,7 +81,10 @@ export const Focus = () => {
     const getSalutation = () => {
       const date = new Date();
       const hours = date.getHours();
-      if (hours > 22 || (hours > 0 && hours < 6)) {
+      console.log('hours', hours);
+      console.log('hours > 0 && hours < 6', hours > 0 && hours < 6);
+
+      if (hours > 22 || (hours >= 0 && hours < 6)) {
         setSalutation(SALUTATION.NIGHT);
       }
       if (hours > 6) {
@@ -98,6 +103,7 @@ export const Focus = () => {
   }, []);
 
   useEffect(() => {
+    console.log('salutation', salutation);
     if (!salutation) {
       return;
     }
@@ -109,11 +115,13 @@ export const Focus = () => {
     if (weather && complimentsObj[weather]) {
       complimentVariants = complimentVariants.concat(complimentsObj[weather]);
     }
+
     setFocus(complimentVariants[getRandomInt(0, complimentVariants.length)]);
   }, [salutation, weather]);
 
   return (
     <section className={styles.Container} aria-label="Focus">
+      {userName && <div className={styles.UserName}>{userName}</div>}
       <div className={styles.Text}>{focus}</div>
     </section>
   );

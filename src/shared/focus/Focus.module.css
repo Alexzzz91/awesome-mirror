@@ -5,8 +5,20 @@
   letter-spacing: 1px;
   line-height: 1;
   margin:0;
+  align-items: center;
+  display: grid;
+  justify-content: center;
 }
 
 .Text{
   font-size:1.5vw;
+}
+
+.UserName {
+  font-size: 4vw;
+  font-family: "Helvetica Neue";
+  color: white;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0;
 }
