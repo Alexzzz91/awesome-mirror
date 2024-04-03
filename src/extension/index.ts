@@ -12,12 +12,12 @@ import {
   ResourceSlot,
 } from '@tramvai/tokens-render';
 import { PageRenderModeModule } from '@tramvai/module-page-render-mode';
-import { HeaderModule } from '~shared/header';
 
 import './app.module.css';
 import { WeatherApiModule } from '~shared/api';
 import { WeatherModule } from '~shared/weather';
 import { ConfigModule } from '~entities/config';
+import { SetEnvExtension } from './setEnv';
 
 createApp({
   name: 'awesome-mirror-extension',
@@ -26,7 +26,6 @@ createApp({
     SpaRouterModule,
     RenderModule.forRoot({ useStrictMode: true }),
     ErrorInterceptorModule,
-    HeaderModule,
     ServerModule,
     HttpClientModule,
     PageRenderModeModule,
@@ -34,6 +33,7 @@ createApp({
     WeatherApiModule,
     WeatherModule,
     ConfigModule,
+    SetEnvExtension,
   ],
   providers: [
     {

@@ -54,7 +54,7 @@ ol, li {
   color: white;
   font-size: 35px;
   position: relative;
-  padding-top: 30%;
+  padding-top: 15%;
   filter: drop-shadow(0 0 10px #0003);
   perspective: 100px;
 }
@@ -93,7 +93,7 @@ ol, li {
 .CarouselSlide:before {
   content: counter(item);
   position: absolute;
-  top: 101%;
+  bottom: 0%;
   left: 50%;
   transform: translate3d(-50%,-40%,70px);
   color: #fff;

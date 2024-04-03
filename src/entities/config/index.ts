@@ -20,9 +20,10 @@ const clientSideLoadEvent = createEvent('clientSideLoading', () => {
   return {};
 });
 
-export const ConfigStore = createReducer('setWeatheApiKey', {
+export const ConfigStore = createReducer('configStore', {
   weatheApiKey: 'e7238ba6d604e266124dd596dfdf2645',
   userName: '',
+  project: 'ext',
 } as ConfigState)
   .on(pushWeatheApiKeyEvent, (state, weatheApiKey) => {
     console.log('weatheApiKey', weatheApiKey);
@@ -81,8 +82,6 @@ const provider = {
     provider,
   ],
 })
-
-// highlight-next-line
 export class ConfigModule {}
 
-console.log('clientSideLoadEvent', clientSideLoadEvent());
+clientSideLoadEvent();

@@ -1,5 +1,21 @@
+import { Clock } from '~shared/clock/Clock';
+import { Focus } from '~shared/focus/Focus';
+import { News } from '~shared/news/News';
+import { Weather } from '~shared/weather/Weather';
+
+import styles from './index.module.css';
+
 export const IndexPage = () => {
-  return <main>index</main>;
+  return (
+    <main>
+      <div className={styles.topRow}>
+        <Clock />
+        <Weather />
+      </div>
+      <News />
+      <Focus />
+    </main>
+  );
 };
 
 export default IndexPage;

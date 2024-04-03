@@ -1,49 +1,102 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Momentum</title>
-	<!-- Weather Icons stuff -->
-	<link rel="stylesheet" href="css/weather-icons.min.css">
-
-
-	<!-- Bootstrap stuff -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-	<!-- our files -->
-	<link rel="stylesheet" href="css/momentum.css" type="text/css">
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/momentum-weather.js"></script>
-	<script src="js/momentum-quote.js"></script>
-	<script src="js/momentum.js"></script>
-	
-</head>
-<body>
-	<!-- YOUR HTML IN HERE -->
-	<div class="bg-wrapper">
-		<div class ="text-right top-right weather">
-			<div id="getCurrentPosition">getCurrentPosition</div>
-			<div><img src="http://openweathermap.org/img/wn/01d@2x.png" id="weatherIcon" alt="" class="icon-img-small">&nbsp;<span id="weather"></span>&#8451;</div>	
-			<div>Ощущается как: &nbsp;<span id="weatherFeelsLike"></span>&#8451</div>
-			<h5 id="location"></h5>
-		</div>
-		<div class ="text-center centered">
-				<div class="block-text">
-					<h1 id="time"></h1><h2 id="ampm"></h2>
-				</div>
-				<h3 id="greetings"></h3>
-		</div>
-		<div class ="text-center bottom-third quote">
-				<div id="quote-text"></div>
-		</div>
-	</div>
-	<script src="js/start.js"></script>
-</body>
+<html class="no-js" lang="ru">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <script>
+        window.__preloadJS = (function onload_inline_es_onload(next) {
+            var called = !1;
+            return function() {
+                if (!called) {
+                    called = !0;
+                    var head = document.head;
+                    next.forEach((function(entry) {
+                        var link = document.createElement("link");
+                        link.rel = "preload",
+                        link.href = entry,
+                        link.as = "script",
+                        link.charset = "utf-8",
+                        link.crossOrigin = "anonymous",
+                        head.appendChild(link)
+                    }
+                    ))
+                }
+            }
+        }
+        )(["dist/client/@_routes_index.eccc0743dabb1a46.chunk.js", "dist/client/react.53791e84460e4c62.js", "dist/client/platform.539c8710c9f8abef.js"])
+        </script> -->
+      <style type="text/css">.a9vERT{color:#fff;font-size:65px;width:50vw}.b9vERT{align-content:baseline;align-items:flex-start;border-left:3px solid #fff;color:#fff;flex-direction:column;margin:0;padding:20px;text-align:left;width:100%}.b9vERT,.c9vERT{display:flex;flex-wrap:wrap;justify-content:flex-start}.c9vERT,.d9vERT{align-content:space-around;align-items:center;flex-direction:row;gap:15px}.d9vERT{display:flex;flex-wrap:wrap;font-size:15vw;justify-content:flex-start;letter-spacing:-1px;margin:0}.auWCjh,.d9vERT{color:#fff;font-family:Helvetica Neue;line-height:1}.auWCjh{align-items:center;display:grid;font-size:2vw;justify-content:center;letter-spacing:1px;margin:5vh 0 0}.buWCjh{font-size:1.5vw}.cuWCjh{color:#fff;font-family:Helvetica Neue;font-size:4vw;letter-spacing:-1px;line-height:1;margin:0}li,ol{list-style:none;margin:0;padding:0}@keyframes hViK8v{75%{left:0}95%{left:100%}98%{left:100%}99%{left:0}}@keyframes jViK8v{75%{left:0}95%{left:-300%}98%{left:-300%}99%{left:0}}@keyframes iViK8v{96%{scroll-snap-align:center}97%{scroll-snap-align:none}99%{scroll-snap-align:none}to{scroll-snap-align:center}}.aViK8v{color:#fff;filter:drop-shadow(0 0 10px #0003);font-size:35px;padding-top:15%;perspective:100px;position:relative}.bViK8v{-ms-overflow-style:none;bottom:0;counter-reset:item;display:flex;left:0;overflow-x:scroll;position:absolute;right:0;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;top:0}.bViK8v::-webkit-scrollbar{display:none}.cViK8v{counter-increment:item;display:flex;flex:0 0 100%;position:relative;width:100%}.cViK8v:before{bottom:0;color:#fff;content:counter(item);font-size:.5em;left:50%;position:absolute;transform:translate3d(-50%,-40%,70px)}.dViK8v{align-items:center;display:flex;flex:1;flex-direction:column;gap:12px;justify-content:center}.eViK8v,.fViK8v{text-align:center}.fViK8v{font-size:28px;opacity:.8}.gViK8v{height:100%;left:0;position:absolute;scroll-snap-align:center;top:0;width:100%}@media (hover:hover){.gViK8v{animation-duration:10s;animation-iteration-count:infinite;animation-name:hViK8v,iViK8v;animation-timing-function:ease}.cViK8v:last-child .gViK8v{animation-name:jViK8v,iViK8v}}@media (prefers-reduced-motion:reduce){.gViK8v{animation-name:none}}.ayHuRO{display:flex}</style>
+      <link crossorigin="anonymous" href="dist/client/@_routes_index.b891a409db87e2d4.chunk.css" rel="stylesheet">
+      <style type="text/css">.bg-wrapper{background-image:url(https://source.unsplash.com/category/nature/1920x1080);background-size:cover;height:100vh;width:100vw}.bg-wrapper:before{background-color:rgba(0,0,0,.35);content:"";height:100vh;position:absolute;width:100vw;z-index:1}main{color:#fff;font-family:Helvetica Neue;font-size:5vw;letter-spacing:-1px;line-height:1;margin:0;position:relative;z-index:9999}.application,header,main{position:relative;z-index:2}body{display:block;margin:0;overflow:hidden;padding:0}.aMuxjy{flex:1;margin-right:1vw;text-align:right}.bMuxjy{align-items:baseline;display:flex;justify-content:end}</style>
+      <link crossorigin="anonymous" href="dist/client/platform.110cbaf935ffa1dc.css" rel="stylesheet">
+      <script defer="defer" charset="utf-8" crossorigin="anonymous" data-critical="true" src="dist/client/@_routes_index.eccc0743dabb1a46.chunk.js"></script><script defer="defer" charset="utf-8" crossorigin="anonymous" data-critical="true" src="dist/client/react.53791e84460e4c62.js"></script><script defer="defer" charset="utf-8" crossorigin="anonymous" data-critical="true" src="dist/client/platform.539c8710c9f8abef.js"></script>
+   </head>
+   <body >
+      <div class="bg-wrapper">
+         <div class="application">
+            <main>
+               <div class="ayHuRO">
+                  <div class="a9vERT">
+                     <div class="b9vERT">
+                        <div class="c9vERT">
+                           <div>January</div>
+                           <div>1</div>
+                           ,
+                           <div>0</div>
+                        </div>
+                        <div class="c9vERT">
+                           <div> </div>
+                        </div>
+                        <div class="d9vERT">
+                           <div>12</div>
+                           :
+                           <div>00</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="aMuxjy">
+                     <div class="bMuxjy">
+                        <span>
+                           0<!-- -->℃
+                        </span>
+                     </div>
+                     <div class="bMuxjy">
+                        Ощущается как:<!-- --> <!-- -->0<!-- -->℃<span></span>
+                     </div>
+                     <span></span>
+                  </div>
+               </div>
+               <section class="aViK8v" aria-label="Gallery">
+                  <ol class="bViK8v">
+                     <li class="cViK8v">
+                        <div class="gViK8v"></div>
+                        <div class="dViK8v">
+                           <div class="eViK8v">&quot;Яндекс&quot; перерегистрировал часть приложений на сербского провайдера</div>
+                           <span class="fViK8v">Суд назначил Google третий оборотный штраф в размере 4,6 миллиарда рублей</span>
+                        </div>
+                     </li>
+                     <li class="cViK8v">
+                        <div class="gViK8v"></div>
+                        <div class="dViK8v">
+                           <div class="eViK8v">Клименко: Украина столкнулась тем, что если про вас не пишут, то вас нет</div>
+                           <span class="fViK8v">Клименко: Украина &quot;выпала из тренда&quot;, это показали данные Google Trends</span>
+                        </div>
+                     </li>
+                     <li class="cViK8v">
+                        <div class="gViK8v"></div>
+                        <div class="dViK8v">
+                           <div class="eViK8v">рнк оштрафовал Google и Telegram на 900 тысяч рублей</div>
+                           <span class="fViK8v">рнк оштрафовал Google и Telegram из-за неисполнения закона</span>
+                        </div>
+                     </li>
+                  </ol>
+               </section>
+               <section class="auWCjh" aria-label="Focus">
+                  <div class="buWCjh">Соберись!</div>
+               </section>
+            </main>
+         </div>
+      </div>
+      <script id="__TRAMVAI_STATE__" type="application/json">{"stores":{"environment":{"OPENWEATHER_BASE_URL":"http://api.openweathermap.org/data/2.5","PROJECT":"ext"},"userAgent":{"browser":{"name":"","browserEngine":"other"},"engine":{},"os":{},"device":{},"cpu":{},"sameSiteNoneCompatible":true},"media":{"height":768,"width":1024,"isTouch":false,"retina":false,"synchronized":false,"supposed":true},"actionTramvai":{"serverState":{}},"requestManager":{"headers":{"x-real-ip":"::ffff:127.0.0.1"}},"router":{"currentRoute":{"name":"@/routes/index","path":"/","config":{"bundle":"mainDefault","pageComponent":"@/routes/index"},"actualPath":"/","params":{}},"currentUrl":{"href":"http://0.0.0.0:3000/","origin":"http://0.0.0.0:3000","protocol":"http:","username":"","password":"","port":"3000","pathname":"/","path":"/","search":"","hash":"","query":{},"host":"0.0.0.0:3000","hostname":"0.0.0.0"}},"pageError":null,"instantMetrics":{"instantMetricsMap":{}},"configStore":{"weatheApiKey":"e7238ba6d604e266124dd596dfdf2645","userName":"","project":"ext"},"fetch weather":{}}}</script>
+   </body>
 </html>
